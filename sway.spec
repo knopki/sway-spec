@@ -3,17 +3,17 @@
 %global project         swaywm
 %global repo            sway
 %global provider_prefix %{provider}.%{provider_tld}/%{project}/%{repo}
-%global commit          0cd418ba42bf7fa9570a2c1c09cea153d3337c7a
+%global commit          e6a52ae387ff3db64cc0867415368bd711c41566
 %global shortcommit     %(c=%{commit}; echo ${c:0:7})
 
 Name:           sway
 Version:        1.0
-Release:        0.5.git%{shortcommit}%{?dist}
+Release:        0.6.git%{shortcommit}%{?dist}
 Summary:        i3-compatible Wayland compositor
 License:        MIT
 URL:            http://swaywm.org/
 # https://%{provider_prefix}/archive/%{commit}/%{repo}-%{shortcommit}.tar.gz
-Source:         https://github.com/swaywm/sway/archive/1.0-alpha.5.tar.gz
+Source:         https://github.com/swaywm/%{name}/archive/%{version}-alpha.6.tar.gz
 Requires:       cairo
 Requires:       gdk-pixbuf2
 Requires:       json-c
@@ -41,7 +41,7 @@ BuildRequires:  xcb-util-image-devel
 %{summary}.
 
 %prep
-%setup -q -n %{repo}-1.0-alpha.5
+%setup -q -n %{repo}-%{version}-alpha.6
 
 %build
 %meson
@@ -68,13 +68,6 @@ BuildRequires:  xcb-util-image-devel
 %{_bindir}/swaylock
 %{_bindir}/swaymsg
 %{_bindir}/swaynag
-#/usr/lib/debug/usr/bin/sway-1.0-0.5.git0cd418b.fc28.x86_64.debug
-#/usr/lib/debug/usr/bin/swaybar-1.0-0.5.git0cd418b.fc28.x86_64.debug
-#/usr/lib/debug/usr/bin/swaybg-1.0-0.5.git0cd418b.fc28.x86_64.debug
-#/usr/lib/debug/usr/bin/swayidle-1.0-0.5.git0cd418b.fc28.x86_64.debug
-#/usr/lib/debug/usr/bin/swaylock-1.0-0.5.git0cd418b.fc28.x86_64.debug
-#/usr/lib/debug/usr/bin/swaymsg-1.0-0.5.git0cd418b.fc28.x86_64.debug
-#/usr/lib/debug/usr/bin/swaynag-1.0-0.5.git0cd418b.fc28.x86_64.debug
 %{_datarootdir}/backgrounds/sway/Sway_Wallpaper_Blue_1136x640.png
 %{_datarootdir}/backgrounds/sway/Sway_Wallpaper_Blue_1136x640_Portrait.png
 %{_datarootdir}/backgrounds/sway/Sway_Wallpaper_Blue_1366x768.png
@@ -87,6 +80,9 @@ BuildRequires:  xcb-util-image-devel
 %{_datarootdir}/bash-completion/completions/swayidle
 %{_datarootdir}/bash-completion/completions/swaylock
 %{_datarootdir}/bash-completion/completions/swaymsg
+%{_datarootdir}/fish/completions/sway.fish
+%{_datarootdir}/fish/completions/swaylock.fish
+%{_datarootdir}/fish/completions/swaymsg.fish
 %{_mandir}/man1/sway.1.gz
 %{_mandir}/man1/swayidle.1.gz
 %{_mandir}/man1/swaylock.1.gz
@@ -102,6 +98,9 @@ BuildRequires:  xcb-util-image-devel
 %{_datarootdir}/zsh/site-functions/_swaymsg
 
 %changelog
+* Sun Oct 14 2018 Sergey Korolev <rpm@skarbek.name> - 1.0-0.6.gite6a52ae3
+- New release
+
 * Tue Aug 7 2018 Marcin Skarbek <rpm@skarbek.name> - 1.0-0.5.git0cd418b
 - New release
 
