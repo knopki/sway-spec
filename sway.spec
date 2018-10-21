@@ -3,17 +3,15 @@
 %global project         swaywm
 %global repo            sway
 %global provider_prefix %{provider}.%{provider_tld}/%{project}/%{repo}
-%global commit          e6a52ae387ff3db64cc0867415368bd711c41566
-%global shortcommit     %(c=%{commit}; echo ${c:0:7})
 
 Name:           sway
 Version:        1.0
-Release:        0.6.git%{shortcommit}%{?dist}
+Release:        0.7.beta.1%{?dist}
 Summary:        i3-compatible Wayland compositor
 License:        MIT
 URL:            http://swaywm.org/
-# https://%{provider_prefix}/archive/%{commit}/%{repo}-%{shortcommit}.tar.gz
-Source:         https://github.com/swaywm/%{name}/archive/%{version}-alpha.6.tar.gz
+
+Source:         https://github.com/swaywm/%{name}/archive/%{version}-beta.1.tar.gz
 Requires:       cairo
 Requires:       gdk-pixbuf2
 Requires:       json-c
@@ -41,7 +39,7 @@ BuildRequires:  xcb-util-image-devel
 %{summary}.
 
 %prep
-%setup -q -n %{repo}-%{version}-alpha.6
+%setup -q -n %{repo}-%{version}-beta.1
 
 %build
 %meson
@@ -57,7 +55,6 @@ BuildRequires:  xcb-util-image-devel
 %license LICENSE
 %doc README*.md
 %doc CONTRIBUTING.md
-%doc HACKING.md
 %{_sysconfdir}/pam.d/swaylock
 %{_sysconfdir}/sway/config
 %{_sysconfdir}/sway/security.d/00-defaults
@@ -90,6 +87,7 @@ BuildRequires:  xcb-util-image-devel
 %{_mandir}/man1/swaynag.1.gz
 %{_mandir}/man5/sway-bar.5.gz
 %{_mandir}/man5/sway-input.5.gz
+%{_mandir}/man5/sway-output.5.gz
 %{_mandir}/man5/sway.5.gz
 %{_mandir}/man5/swaynag.5.gz
 %{_datarootdir}/wayland-sessions/sway.desktop
@@ -98,7 +96,10 @@ BuildRequires:  xcb-util-image-devel
 %{_datarootdir}/zsh/site-functions/_swaymsg
 
 %changelog
-* Sun Oct 14 2018 Sergey Korolev <rpm@skarbek.name> - 1.0-0.6.gite6a52ae3
+* Sun Oct 21 2018 Sergey Korolev <korolev.srg@gmail.com> - 1.0-beta.1-1
+- New release
+
+* Sun Oct 14 2018 Sergey Korolev <korolev.srg@gmail.com> - 1.0-0.6.gite6a52ae3
 - New release
 
 * Tue Aug 7 2018 Marcin Skarbek <rpm@skarbek.name> - 1.0-0.5.git0cd418b
