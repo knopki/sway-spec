@@ -6,19 +6,19 @@
 
 Name:           sway
 Version:        1.0
-Release:        0.7.beta.1%{?dist}
+Release:        beta.2%{?dist}
 Summary:        i3-compatible Wayland compositor
 License:        MIT
 URL:            http://swaywm.org/
 
-Source:         https://github.com/swaywm/%{name}/archive/%{version}-beta.1.tar.gz
+Source:         https://github.com/swaywm/%{name}/archive/%{version}-beta.2.tar.gz
 Requires:       cairo
 Requires:       gdk-pixbuf2
 Requires:       json-c
 Requires:       libcap
 Requires:       pango
 Requires:       pcre
-Requires:       wlroots
+Requires:       wlroots >= 0.2
 Requires:       xcb-util-image
 BuildRequires:  cairo-devel
 BuildRequires:  gcc
@@ -39,7 +39,7 @@ BuildRequires:  xcb-util-image-devel
 %{summary}.
 
 %prep
-%setup -q -n %{repo}-%{version}-beta.1
+%setup -q -n %{repo}-%{version}-beta.2
 
 %build
 %meson
@@ -78,8 +78,10 @@ BuildRequires:  xcb-util-image-devel
 %{_datarootdir}/bash-completion/completions/swaylock
 %{_datarootdir}/bash-completion/completions/swaymsg
 %{_datarootdir}/fish/completions/sway.fish
+%{_datarootdir}/fish/completions/swayidle.fish
 %{_datarootdir}/fish/completions/swaylock.fish
 %{_datarootdir}/fish/completions/swaymsg.fish
+%{_datarootdir}/fish/completions/swaynag.fish
 %{_mandir}/man1/sway.1.gz
 %{_mandir}/man1/swayidle.1.gz
 %{_mandir}/man1/swaylock.1.gz
@@ -96,6 +98,9 @@ BuildRequires:  xcb-util-image-devel
 %{_datarootdir}/zsh/site-functions/_swaymsg
 
 %changelog
+* Sun Dec 2 2018 Sergey Korolev <korolev.srg@gmail.com> - 1.0-beta.2-1
+- New release
+
 * Sun Oct 21 2018 Sergey Korolev <korolev.srg@gmail.com> - 1.0-beta.1-1
 - New release
 
