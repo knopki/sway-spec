@@ -6,7 +6,7 @@
 
 Name:           sway
 Version:        1.0
-Release:        beta.2%{?dist}
+Release:        0.8.beta.2%{?dist}
 Summary:        i3-compatible Wayland compositor
 License:        MIT
 URL:            http://swaywm.org/
@@ -39,7 +39,7 @@ BuildRequires:  xcb-util-image-devel
 %{summary}.
 
 %prep
-%setup -q -n %{repo}-%{version}-beta.2
+%setup -q -n %{repo}-%{version}-0.8.beta.2
 
 %build
 %meson
